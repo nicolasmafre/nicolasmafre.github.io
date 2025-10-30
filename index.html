@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfólio — Seu Nome</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <h1 class="logo">Seu Nome</h1>
+                <nav class="nav">
+                    <a href="#sobre">Sobre</a>
+                    <a href="#projetos">Projetos</a>
+                    <a href="#contato">Contato</a>
+                </nav>
+                <button id="menu-btn" class="menu-btn">☰</button>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero" class="hero">
+                <div class="container">
+                    <h2>Olá, eu sou <span class="accent">Seu Nome</span></h2>
+                    <p>Desenvolvedor web | Designer | Outro</p>
+                    <a class="btn" href="#projetos">Ver projetos</a>
+                </div>
+            </section>
+
+
+            <section id="sobre" class="container sobre">
+                <h3>Sobre</h3>
+                <p>Um parágrafo curto sobre você, suas habilidades e objetivos profissionais. Ex: Tenho experiência em HTML, CSS, JavaScript e curiosidade por ciência de dados.</p>
+            </section>
+
+
+            <section id="projetos" class="container projetos">
+                <h3>Projetos</h3>
+                <div class="grid">
+                    <!-- Projeto 1 -->
+                    <article class="card">
+                        <img src="images/projeto1.png" alt="Projeto 1" />
+                        <h4>Projeto 1</h4>
+                        <p>Breve descrição do projeto. Tecnologias: HTML, CSS, JS.</p>
+                        <p class="links"><a href="#">Ver demo</a> · <a href="#">Código</a></p>
+                    </article>
+
+
+                    <!-- Repita cards conforme necessário -->
+
+
+                </div>
+            </section>
+
+
+            <section id="contato" class="container contato">
+                <h3>Contato</h3>
+                <form id="contact-form">
+                    <label>
+                        Nome
+                        <input type="text" name="nome" required />
+                    </label>
+                    <label>
+                        E‑mail
+                        <input type="email" name="email" required />
+                    </label>
+                    <label>
+                        Mensagem
+                        <textarea name="mensagem" rows="4" required></textarea>
+                    </label>
+                    <button type="submit" class="btn">Enviar</button>
+                    <p id="form-msg" aria-live="polite"></p>
+                </form>
+            </section>
+        </main>
+
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year"></span> Seu Nome — <a href="https://github.com/seuusuario" target="_blank" rel="noopener">GitHub</a></p>
+            </div>
+        </footer>
+
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
