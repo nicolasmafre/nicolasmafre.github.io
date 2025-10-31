@@ -1,88 +1,51 @@
-<!doctype html>
-<html lang="pt-BR">
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portfólio — Seu Nome</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    </head>
-    <body>
-        <header class="site-header">
-            <div class="container">
-                <h1 class="logo">Seu Nome</h1>
-                <nav class="nav">
-                    <a href="#sobre">Sobre</a>
-                    <a href="#projetos">Projetos</a>
-                    <a href="#contato">Contato</a>
-                </nav>
-                <button id="menu-btn" class="menu-btn">☰</button>
-            </div>
-        </header>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio de Nicolas</title>
+  <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body class="container">
+  <header>
+    <h1>👨‍💻 Nicolas - Desenvolvedor Web</h1>
+    <p>Bem-vindo ao meu portfólio!</p>
+    <nav>
+      <a hx-get="sections/sobre.html" hx-target="#main-content" hx-swap="innerHTML">Sobre</a>
+      <a hx-get="sections/projetos.html" hx-target="#main-content" hx-swap="innerHTML">Projetos</a>
+      <a hx-get="sections/contato.html" hx-target="#main-content" hx-swap="innerHTML">Contato</a>
+    </nav>
+  </header>
 
-        <main>
-            <section id="hero" class="hero">
-                <div class="container">
-                    <h2>Olá, eu sou <span class="accent">Seu Nome</span></h2>
-                    <p>Desenvolvedor web | Designer | Outro</p>
-                    <a class="btn" href="#projetos">Ver projetos</a>
-                </div>
-            </section>
-
-
-            <section id="sobre" class="container sobre">
-                <h3>Sobre</h3>
-                <p>Um parágrafo curto sobre você, suas habilidades e objetivos profissionais. Ex: Tenho experiência em HTML, CSS, JavaScript e curiosidade por ciência de dados.</p>
-            </section>
-
-
-            <section id="projetos" class="container projetos">
-                <h3>Projetos</h3>
-                <div class="grid">
-                    <!-- Projeto 1 -->
-                    <article class="card">
-                        <img src="images/projeto1.png" alt="Projeto 1" />
-                        <h4>Projeto 1</h4>
-                        <p>Breve descrição do projeto. Tecnologias: HTML, CSS, JS.</p>
-                        <p class="links"><a href="#">Ver demo</a> · <a href="#">Código</a></p>
-                    </article>
-
-
-                    <!-- Repita cards conforme necessário -->
-
-
-                </div>
-            </section>
-
-
-            <section id="contato" class="container contato">
-                <h3>Contato</h3>
-                <form id="contact-form">
-                    <label>
-                        Nome
-                        <input type="text" name="nome" required />
-                    </label>
-                    <label>
-                        E‑mail
-                        <input type="email" name="email" required />
-                    </label>
-                    <label>
-                        Mensagem
-                        <textarea name="mensagem" rows="4" required></textarea>
-                    </label>
-                    <button type="submit" class="btn">Enviar</button>
-                    <p id="form-msg" aria-live="polite"></p>
-                </form>
-            </section>
-        </main>
-
-
-        <footer class="site-footer">
-            <div class="container">
-                <p>© <span id="year"></span> Seu Nome — <a href="https://github.com/seuusuario" target="_blank" rel="noopener">GitHub</a></p>
-            </div>
-        </footer>
-
-
-        <script src="js/main.js"></script>
-    </body>
+  <div id="main-content" class="content">
+    <h2>Olá!</h2>
+    <p>Use o menu acima para navegar pelo meu portfólio sem recarregar a página.</p>
+  </div>
+</body>
 </html>
