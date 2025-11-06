@@ -1,4 +1,4 @@
-# Portfólio de Nicolas M. Freitas
+# Portfólio de Nicolas Mafre
 
 Este repositório contém o código-fonte do meu portfólio pessoal, uma página web estática criada para apresentar minhas habilidades, projetos e formação.
 
@@ -16,11 +16,11 @@ Tenho grande interesse em aprender e desenvolver projetos, especialmente utiliza
 
 ---
 
-## 🚀 Habilidades e Tecnologias
+## 🚀 Áreas de Interesse
 
 - **Linguagens e Frameworks:** Python, Flask, HTMX
 - **Sistemas Operacionais:** Ubuntu/Linux
-- **Áreas de Interesse:** Software Livre, Redes de Computadores, Perícia Computacional Forense
+- **Áreas de Interesse:** Software Livre, Redes de Computadores, Perícia Computacional Forense, Inteligência Artificial e Processamento de Linguagem Natural.
 
 ---
 
