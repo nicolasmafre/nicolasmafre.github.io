@@ -40,6 +40,9 @@ Aqui estão alguns dos projetos que desenvolvi e que estão disponíveis no meu 
 - **[Scripts Python](https://github.com/nicolasmafre/Python)**
   - *Um repositório de utilitários, automações e estudos na linguagem Python.*
 
+- **[Projeto Jarvis](https://github.com/nicolasmafre/Projeto_Jarvis)**
+  - *Simulador da Inteligência Artificial da armadura do Homem de Ferro* 
+
 ---
 
 ## 📫 Contato
