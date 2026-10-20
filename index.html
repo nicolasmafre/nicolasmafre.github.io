@@ -26,6 +26,7 @@
             --tag-text: #3730a3;
         }
 
+        /* Variáveis de Tema (Dark Mode) */
         [data-theme="dark"] {
             --bg-body: #0f1115;
             --bg-card: #1c1f26;
@@ -110,13 +111,12 @@
                 <i class="bi bi-geo-alt-fill"></i> Assis, São Paulo - Brasil
             </div>
 
-            <!-- Botão com HTMX para revelar o e-mail de forma segura. 
-                 O e-mail está em Base64 (bmljb2xhc21hZnJlQGdtYWlsLmNvbQ==) e só é revelado no click -->
-            <!-- Botão de Contato Seguro (Anti-Spam) -->
-            <button class="btn btn-primary" 
-                    hx-on:click="window.location.href = 'mailto:' + atob('bmljb2xhc21hZnJlQGdtYWlsLmNvbQ==');">
+            <!-- Botão de Contato Seguro (Anti-Spam em Vanilla JS) -->
+            <a href="javascript:void(0)"
+               onclick="window.location.href = 'mailto:' + atob('bXVtYm8tYWZmaXgtYmxpdHpAZHVjay5jb20=')"
+               class="btn btn-primary" target="_blank">
                 <i class="bi bi-envelope-fill"></i> Entrar em Contato
-            </button>
+            </a>
             <!-- HTMX: Alternador de Tema -->
             <button class="btn btn-outline" 
                     hx-on:click="
