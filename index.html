@@ -17,26 +17,26 @@
         :root {
             --bg-body: #f3f4f6;
             --bg-card: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
+            --text-main: #371f1f;
+            --text-muted: #806b6b;
+            --accent: #eb2525;
+            --accent-hover: #d81d1d;
             --border: #e5e7eb;
             --tag-bg: #e0e7ff;
-            --tag-text: #3730a3;
+            --tag-text: #a33030;
         }
 
         /* Variáveis de Tema (Dark Mode) */
         [data-theme="dark"] {
-            --bg-body: #0f1115;
-            --bg-card: #1c1f26;
+            --bg-body: #150f0f;
+            --bg-card: #261c1c;
             --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #3b82f6;
-            --accent-hover: #60a5fa;
-            --border: #2d3748;
-            --tag-bg: #1e3a8a;
-            --tag-text: #bfdbfe;
+            --text-muted: #af9c9d;
+            --accent: #f63b3b;
+            --accent-hover: #fa6060;
+            --border: #482d2d;
+            --tag-bg: #8a1e1e;
+            --tag-text: #febfbf;
         }
 
         /* Reset e Base */
@@ -114,13 +114,15 @@
             <!-- Botão de Contato Seguro (Anti-Spam em Vanilla JS) -->
             <a href="javascript:void(0)"
                onclick="window.location.href = 'mailto:' + atob('bXVtYm8tYWZmaXgtYmxpdHpAZHVjay5jb20=')"
-               class="btn btn-primary" target="_blank">
+               class="btn btn-primary" target="_blank" alt="Entrar em Contato">
                 <i class="bi bi-envelope-fill"></i> Entrar em Contato
             </a>
+            <!-- Botão para alterar o tema -->
             <button id="theme-toggle-btn" class="btn btn-outline" onclick="toggleTheme()">
                 <i class="bi bi-sun-fill"></i> Tema Claro
             </button>
 
+            <!-- Botões de redes sociais -->
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/nicodemafre/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
                 <a href="https://github.com/nicolasmafre" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
