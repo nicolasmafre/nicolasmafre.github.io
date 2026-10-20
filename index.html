@@ -117,15 +117,7 @@
                class="btn btn-primary" target="_blank">
                 <i class="bi bi-envelope-fill"></i> Entrar em Contato
             </a>
-            <!-- HTMX: Alternador de Tema -->
-            <button class="btn btn-outline" 
-                    hx-on:click="
-                        let current = document.documentElement.getAttribute('data-theme');
-                        let next = current === 'dark' ? 'light' : 'dark';
-                        document.documentElement.setAttribute('data-theme', next);
-                        localStorage.setItem('theme', next);
-                        this.innerHTML = next === 'dark' ? '<i class=\'bi bi-sun-fill\'></i> Tema Claro' : '<i class=\'bi bi-moon-fill\'></i> Tema Escuro';
-                    ">
+            <button id="theme-toggle-btn" class="btn btn-outline" onclick="toggleTheme()">
                 <i class="bi bi-sun-fill"></i> Tema Claro
             </button>
 
@@ -269,6 +261,16 @@
                 }
             });
         })();
+
+        <!-- Script de Alteração de Tema -->
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            localStorage.setItem('theme', nextTheme);
+            updateThemeUI(nextTheme);
+        }
     </script>
 </body>
 </html>
