@@ -1,259 +1,274 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-br" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio de nicolasmafre</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nícolas Martins Freitas - Portfólio</title>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-vS6XHukPAe4QVcDsAUclFWPuyDyH85qs1z/dY2vOqH5oKFPDA2GlIZRTMbPenA6/" crossorigin="anonymous"></script>
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS para estilização -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <!-- Bootstrap Icons para os ícones -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Incluindo a biblioteca HTMX -->
-  <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-vS6XHukPAe4QVcDsAUclFWPuyDyH85qs1z/dY2vOqH5oKFPDA2GlIZRTMbPenA6/" crossorigin="anonymous"></script>
+    <style>
+        /* Variáveis de Tema (Design System Incorporado) */
+        :root {
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border: #e5e7eb;
+            --tag-bg: #e0e7ff;
+            --tag-text: #3730a3;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f1115;
+            --bg-card: #1c1f26;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border: #2d3748;
+            --tag-bg: #1e3a8a;
+            --tag-text: #bfdbfe;
+        }
+
+        /* Reset e Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; transition: background-color 0.3s, color 0.3s; }
+        a { text-decoration: none; color: var(--accent); transition: color 0.2s; }
+        a:hover { color: var(--accent-hover); }
+        h1, h2, h3, h4 { font-weight: 700; margin-bottom: 0.5rem; }
+        
+        /* Layout Principal */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; display: grid; grid-template-columns: 300px 1fr; gap: 2rem; }
+        
+        /* Sidebar Fixa (Perfil) */
+        .sidebar { background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); position: sticky; top: 2rem; height: max-content; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .profile-icon { font-size: 4rem; color: var(--accent); margin-bottom: 1rem; }
+        .sidebar h1 { font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .sidebar p.title { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .location { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        /* Botões */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
+        .btn-primary { background-color: var(--accent); color: white; margin-bottom: 1rem; }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-main); margin-bottom: 0.5rem; }
+        .btn-outline:hover { background: var(--bg-body); }
+        
+        /* Redes Sociais */
+        .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; }
+        .social-links a { color: var(--text-muted); font-size: 1.25rem; }
+        .social-links a:hover { color: var(--accent); }
+
+        /* Conteúdo Principal */
+        .main-content > section { background: var(--bg-card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .section-title { font-size: 1.25rem; border-bottom: 2px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        /* Tags de Interesse */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background: var(--tag-bg); color: var(--tag-text); padding: 0.4rem 0.8rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; }
+
+        /* Grid de Projetos */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .project-card { border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+        .project-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .project-card p { color: var(--text-muted); font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.5rem; }
+        
+        /* Listas de Educação */
+        .edu-list { list-style: none; }
+        .edu-list li { position: relative; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+        .edu-list li::before { content: ''; position: absolute; left: 0; top: 0.4rem; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+        .edu-list strong { display: block; color: var(--text-main); }
+        .edu-list span { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Responsividade */
+        @media (max-width: 850px) {
+            .container { grid-template-columns: 1fr; padding: 1rem; }
+            .sidebar { position: relative; top: 0; }
+        }
+    </style>
 </head>
+<body>
 
-<!-- O atributo data-bs-theme é usado pelo Bootstrap para aplicar o tema claro ou escuro -->
-<body data-bs-theme="light">
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <i class="bi bi-code-square"></i> Portfólio de Nicolas
-      </a>
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <!-- Botão que aciona o menu dropdown de temas -->
-          <button class="btn btn-link nav-link dropdown-toggle" id="bd-theme" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- O ícone aqui mudará dinamicamente para refletir o tema ativo -->
-            <i class="bi bi-sun-fill theme-icon-active" data-theme-icon-active></i>
-            <span class="d-none">Tema</span>
-          </button>
-          <!-- Menu dropdown com as opções de tema -->
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
-            <!--
-              Opção de Tema Claro:
-              - hx-on:click: Este é um atributo HTMX que executa um script JavaScript quando o elemento é clicado.
-              - Aqui, ele chama a função `setTheme('light')`, que foi definida em um script no final do body.
-              - Esta abordagem, embora use um atributo HTMX, executa lógica no lado do cliente.
-              - O ideal para HTMX seria fazer uma requisição a um servidor (ex: hx-post="/change-theme") que cuidaria da lógica.
-              - Como este é um site estático, usamos hx-on:click para demonstrar o uso de atributos HTMX.
-            -->
-            <li><button type="button" class="dropdown-item d-flex align-items-center" hx-on:click="setTheme('light')"><i class="bi bi-sun-fill me-2" data-theme-icon="light"></i> Claro</button></li>
+        
+        <!-- SIDEBAR: Perfil e Contato -->
+        <aside class="sidebar">
+            <i class="bi bi-terminal-fill profile-icon"></i>
+            <h1>Nícolas Martins Freitas</h1>
+            <p class="title">Profissional de TI e Entusiasta de Software Livre</p>
+            
+            <div class="location">
+                <i class="bi bi-geo-alt-fill"></i> Assis, São Paulo - Brasil
+            </div>
 
-            <!--
-              Opção de Tema Escuro:
-              - hx-on:click: Da mesma forma que o botão 'Claro', este chama a função `setTheme` com o parâmetro 'dark'.
-            -->
-            <li><button type="button" class="dropdown-item d-flex align-items-center" hx-on:click="setTheme('dark')"><i class="bi bi-moon-stars-fill me-2" data-theme-icon="dark"></i> Escuro</button></li>
+            <!-- Botão com HTMX para revelar o e-mail de forma segura. 
+                 O e-mail está em Base64 (bmljb2xhc21hZnJlQGdtYWlsLmNvbQ==) e só é revelado no click -->
+            <!-- Botão de Contato Seguro (Anti-Spam) -->
+            <button class="btn btn-primary" 
+                    hx-on:click="window.location.href = 'mailto:' + atob('bmljb2xhc21hZnJlQGdtYWlsLmNvbQ==');">
+                <i class="bi bi-envelope-fill"></i> Entrar em Contato
+            </button>
+            <!-- HTMX: Alternador de Tema -->
+            <button class="btn btn-outline" 
+                    hx-on:click="
+                        let current = document.documentElement.getAttribute('data-theme');
+                        let next = current === 'dark' ? 'light' : 'dark';
+                        document.documentElement.setAttribute('data-theme', next);
+                        localStorage.setItem('theme', next);
+                        this.innerHTML = next === 'dark' ? '<i class=\'bi bi-sun-fill\'></i> Tema Claro' : '<i class=\'bi bi-moon-fill\'></i> Tema Escuro';
+                    ">
+                <i class="bi bi-sun-fill"></i> Tema Claro
+            </button>
 
-            <!--
-              Opção de Tema Automático:
-              - hx-on:click: Chama a função `setTheme` com 'auto'. A função então verificará a preferência do sistema operacional do usuário.
-            -->
-            <li><button type="button" class="dropdown-item d-flex align-items-center" hx-on:click="setTheme('auto')"><i class="bi bi-circle-half me-2" data-theme-icon="auto"></i> Auto</button></li>
-          </ul>
-        </li>
-      </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nicodemafre/" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/nicolasmafre" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://dev.to/nicolasmafre" target="_blank" title="Dev.to"><i class="bi bi-book-half"></i></a>
+                <a href="http://lattes.cnpq.br/0795004643387536" target="_blank" title="Currículo Lattes"><i class="bi bi-person-lines-fill"></i></a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT: Informações -->
+        <main class="main-content">
+            
+            <!-- Sobre Mim -->
+            <section>
+                <h2 class="section-title"><i class="bi bi-person-fill"></i> Sobre Mim</h2>
+                <p align="justify">
+                    Trabalho com computação e infraestrutura de TI no Centro Estatual de Educação Tecnológica Paula Souza. 
+                    Sou estudante de Ciência de Dados e apaixonado por tecnologia, programação e inovação. 
+                    Como defensor do Software Livre, meu ambiente principal é o Linux. Adoro transformar ideias em código 
+                    utilizando Python, seja estruturando dados, criando projetos de Inteligência Artificial ou desenvolvendo 
+                    para a web com Flask e HTMX. Busco sempre desenhar soluções que unam simplicidade, performance e alto impacto tecnológico.
+                </p>
+                
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem;">Áreas de Especialidade</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Análise de Dados</span>
+                    <span class="tag">Inteligência Artificial</span>
+                    <span class="tag">Flask & HTMX</span>
+                    <span class="tag">Ubuntu / Linux</span>
+                    <span class="tag">Redes de Computadores</span>
+                    <span class="tag">Software Livre</span>
+                </div>
+            </section>
+
+            <!-- Projetos de Destaque -->
+            <section>
+                <h2 class="section-title"><i class="bi bi-code-slash"></i> Projetos de Destaque</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <h3>Controle de Estoque</h3>
+                        <p>Sistema completo de gerenciamento de estoque utilizando Python, HTML, CSS, JavaScript e o micro-framework Flask.</p>
+                        <a href="https://github.com/nicolasmafre/controle_estoque" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                        <a href="https://nicolasmafre.pythonanywhere.com/" target="_blank" style="margin-top:0.5rem"><i class="bi bi-box-arrow-up-right"></i> Acessar Aplicação</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Projeto Jarvis</h3>
+                        <p>Simulador inspirado na Inteligência Artificial da armadura do Homem de Ferro.</p>
+                        <a href="https://github.com/nicolasmafre/Projeto_Jarvis" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Ficha Remissiva</h3>
+                        <p>Aplicação voltada para criar, estruturar e gerenciar fichas remissivas de estudo e organização.</p>
+                        <a href="https://github.com/nicolasmafre/ficha_remissiva" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Scripts Python</h3>
+                        <p>Repositório de automações, rotinas úteis e estudos focados na linguagem Python.</p>
+                        <a href="https://github.com/nicolasmafre/Python" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>UWFo</h3>
+                        <p>Soluções para laboratórios de informática voltados para ambientes educacionais.</p>
+                        <a href="https://github.com/nicolasmafre/UWFo.git" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>FlaskProject</h3>
+                        <p>Projeto base estrutural para iniciar estudos e aplicações utilizando o micro-framework Flask.</p>
+                        <a href="https://github.com/nicolasmafre/FlaskProject" target="_blank"><i class="bi bi-github"></i> Ver Código</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Formação Acadêmica -->
+            <section>
+                <h2 class="section-title"><i class="bi bi-mortarboard-fill"></i> Formação Acadêmica</h2>
+                
+                <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Graduação e Cursos Técnicos</h3>
+                <ul class="edu-list">
+                    <li>
+                        <strong>Bacharelado em Ciência de Dados</strong>
+                        <span>Univesp (Cursando)</span>
+                    </li>
+                    <li>
+                        <strong>Bacharelado em Sistemas de Informação</strong>
+                        <span>UFSCar (Incompleto)</span>
+                    </li>
+                    <li>
+                        <strong>Licenciatura em Letras</strong>
+                        <span>Faculdades Integradas de Itararé</span>
+                    </li>
+                    <li>
+                        <strong>Técnico em Informática</strong>
+                        <span>Colégio XXV de Abril</span>
+                    </li>
+                </ul>
+
+                <h3 style="font-size: 1.1rem; margin: 1.5rem 0 1rem 0;">Especializações e Pós-graduação</h3>
+                <ul class="edu-list">
+                    <li>
+                        <strong>Educação e Direitos Humanos</strong>
+                        <span>Universidade Federal do Paraná (UFPR Litoral)</span>
+                    </li>
+                    <li>
+                        <strong>Educação Empreendedora</strong>
+                        <span>Universidade Federal de São João del Rei (UFSJ)</span>
+                    </li>
+                    <li>
+                        <strong>Perícia Computacional Forense</strong>
+                        <span>Universidade Cruzeiro do Sul</span>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
     </div>
-  </nav>
 
-  <div class="container mt-4">
-
-    <header class="p-5 mb-4 bg-body-tertiary rounded-3 text-center">
-      <h1 class="display-5 fw-bold">Profissional de TI e Entusiasta de Software Livre</h1>
-      <p class="fs-4">Trabalhando com tecnologia no Centro Estadual de Educação Tecnológica Paula Souza</p>
-      <a href="mailto:nicolasmafre@gmail.com" target="_self" class="btn btn-primary btn-lg">
-        <i class="bi bi-envelope-fill"></i> nicolasmafre@gmail.com
-      </a>
-    </header>
-
-    <div class="row g-4 mb-4">
-      <div class="col-lg-7">
-        <div class="card shadow-sm mb-4">
-          <div class="card-header"><h4 class="my-0 fw-normal">Sobre Mim</h4></div>
-          <div class="card-body">
-            <p class="card-text">
-              Sou entusiasta em Software Livre e uso o sistema operacional Ubuntu/Linux no meu cotidiano.
-              Trabalho com redes de computadores e atividades correlatas da área da Tecnologia da Informação.
-              Adoro aprender e programar em Python, usar HTMX e Flask em muitos projetos.
-            </p>
-          </div>
-        </div>
-        <div class="card shadow-sm mb-4">
-          <div class="card-header"><h4 class="my-0 fw-normal">Áreas de Interesse</h4></div>
-          <div class="card-body">
-            <span class="badge text-bg-primary fs-6 m-1">Python</span>
-            <span class="badge text-bg-info fs-6 m-1">HTMX</span>
-            <span class="badge text-bg-dark fs-6 m-1">Flask</span>
-            <span class="badge text-bg-warning fs-6 m-1">Ubuntu/Linux</span>
-            <span class="badge text-bg-success fs-6 m-1">Software Livre</span>
-            <span class="badge text-bg-secondary fs-6 m-1">Redes</span>
-            <span class="badge text-bg-danger fs-6 m-1">Perícia Computacional</span>
-            <span class="badge text-bg-light fs-6 m-1">Processamento de Linguagem Natural</span>
-          </div>
-        </div>
-        <div class="card shadow-sm">
-          <div class="card-header">
-            <h4 class="my-0 fw-normal">Redes Sociais</h4>
-          </div>
-          <div class="card-body">
-            <span class="badge">
-              <a href="https://www.linkedin.com/in/nicodemafre/" target="_blank" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-github"></i> LinkedIn</a>
-            </span>
-            <span class="badge">
-              <a href="https://dev.to/nicolasmafre" target="_blank" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-github"></i> Dev.to</a>
-            </span>
-            <span class="badge">
-              <a href="https://huggingface.co/nicolasmafre" target="_blank" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-github"></i> HuggingFace</a>
-            </span>
-            <span class="badge">
-              <a href="http://lattes.cnpq.br/0795004643387536" target="_blank" class="btn btn-outline-dark btn-sm me-2"><i class="bi bi-github"></i> Currículo Lattes</a>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-5">
-        <div class="card shadow-sm">
-          <div class="card-header"><h4 class="my-0 fw-normal">Formação Acadêmica</h4></div>
-          <div class="card-body">
-
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Cursando:</strong> Bacharelado em Ciência de Dados (Univesp)</li>
-              <li class="list-group-item"><strong>Incompleto:</strong> Bacharelado em Sistemas de Informação (UFSCar)</li>
-              <li class="list-group-item">Licenciatura em Letras (Fac. Integradas de Itararé)</li>
-              <li class="list-group-item">Técnico em Informática (Colégio XXV de Abril)</li>
-            </ul>
-
-            <hr class="my-3">
-
-            <h5 class="mt-2">Especializações (Pós-graduação)</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Educação e Direitos Humanos
-                <small class="d-block text-body-secondary">Universidade Federal do Paraná (UFPR Litoral)</small>
-              </li>
-              <li class="list-group-item">
-                Educação Empreendedora
-                <small class="d-block text-body-secondary">Universidade Federal de São João del Rei (UFSJ)</small>
-              </li>
-              <li class="list-group-item">
-                Perícia Computacional Forense
-                <small class="d-block text-body-secondary">Universidade Cruzeiro do Sul</small>
-              </li>
-            </ul>
-            </div>
-        </div>
-      </div>
-    </div>
-
-    <section class="mb-5">
-      <h2 class="text-center mb-4">Projetos de Destaque</h2>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Controle de Estoque</h5>
-              <p class="card-text">Um sistema para gerenciamento de estoque, usando Python, HTML, CSS, JScript e o micro-framework Flask.</p>
-              <p class="card-text"><a href="https://nicolasmafre.pythonanywhere.com/" class="btn btn-outline-dark mt-auto" target="_blank">nicolasmafre.pythonanywhere.com</a></p>
-              <a href="https://github.com/nicolasmafre/controle_estoque" class="btn btn-outline-dark mt-auto" target="_blank">Ver no GitHub <i class="bi bi-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">FlaskProject</h5>
-              <p class="card-text">Projeto base de estudo utilizando o micro-framework Flask.</p>
-              <a href="https://github.com/nicolasmafre/FlaskProject" class="btn btn-outline-dark mt-auto" target="_blank">Ver no GitHub <i class="bi bi-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Ficha Remissiva</h5>
-              <p class="card-text">Aplicação para criar e gerenciar fichas remissivas, para organização.</p>
-              <a href="https://github.com/nicolasmafre/ficha_remissiva" class="btn btn-outline-dark mt-auto" target="_blank">Ver no GitHub <i class="bi bi-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Scripts Python</h5>
-              <p class="card-text">Um repositório de utilitários, automações e estudos na linguagem Python.</p>
-              <a href="https://github.com/nicolasmafre/Python" class="btn btn-outline-dark mt-auto" target="_blank">Ver no GitHub <i class="bi bi-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Projeto Jarvis</h5>
-              <p class="card-text">Simulador da Inteligência Artificial da armadura do Homem de Ferro</p>
-              <a href="https://github.com/nicolasmafre/Projeto_Jarvis" class="btn btn-outline-dark mt-auto" target="_blank">Ver no GitHub <i class="bi bi-github"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <!-- Script refatorado para o seletor de tema -->
-  <script>
-    (() => {
-      'use strict'
-
-      // Chave para salvar o tema no localStorage do navegador
-      const themeStorageKey = 'bootstrap-theme'
-
-      // Elemento <html>, onde o tema do Bootstrap é aplicado
-      const htmlEl = document.documentElement
-
-      // Ícone ativo que é exibido no botão do tema
-      const activeThemeIcon = document.querySelector('[data-theme-icon-active]')
-
-      // Função global para definir o tema. Será chamada pelos atributos hx-on:click
-      window.setTheme = (theme) => {
-        // Salva a preferência do usuário (light, dark ou auto) no localStorage
-        localStorage.setItem(themeStorageKey, theme)
-
-        let themeToApply;
-        if (theme === 'auto') {
-          // Se for 'auto', verifica a preferência do sistema operacional
-          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        } else {
-          // Caso contrário, usa o tema escolhido diretamente
-          themeToApply = theme
-        }
-
-        // Aplica o tema ao documento mudando o atributo 'data-bs-theme'
-        htmlEl.setAttribute('data-bs-theme', themeToApply)
-
-        // Atualiza o ícone exibido no botão para refletir o tema ativo
-        const newActiveIcon = document.querySelector(`[data-theme-icon="${themeToApply}"]`)
-        if(newActiveIcon) {
-            activeThemeIcon.className = newActiveIcon.className
-            activeThemeIcon.classList.add('theme-icon-active')
-        }
-      }
-
-      // Função auto-executável para carregar o tema na inicialização da página
-      const loadTheme = () => {
-        // Pega o tema salvo no localStorage ou usa 'auto' como padrão
-        const storedTheme = localStorage.getItem(themeStorageKey) || 'auto'
-        // Define o tema
-        window.setTheme(storedTheme)
-      }
-
-      // Carrega o tema assim que o DOM estiver pronto
-      loadTheme()
-    })()
-  </script>
+    <!-- Script de Inicialização de Tema LocalStorage -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeToApply = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', themeToApply);
+            
+            // Atualiza o texto do botão para coincidir com o tema inicial logo que a página carrega
+            document.addEventListener('DOMContentLoaded', () => {
+                const themeBtn = document.querySelector('button[hx-on\\:click*="localStorage.setItem"]');
+                if(themeBtn) {
+                    themeBtn.innerHTML = themeToApply === 'dark' ? '<i class="bi bi-sun-fill"></i> Tema Claro' : '<i class="bi bi-moon-fill"></i> Tema Escuro';
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
